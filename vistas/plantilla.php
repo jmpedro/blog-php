@@ -3,7 +3,7 @@
 	// INSTANCIAMOS EL OBJETO PARA BLOG
 	$dataBlog = ControladorBlog::ctrTraerDatosBlog();
 	// INSTANCIAMOS EL OBJETO PARA CATEGORIAS
-	$dataCategorias = ControladorBlog::ctrTraerDatosCategorias();
+	$dataCategorias = ControladorBlog::ctrTraerDatosCategorias(null, null);
 	// INSTANCIAMOS EL OBJETO PARA OBTENER LOS ARTICULOS 
 	$dataArticuloCat = ControladorBlog::ctrTraerDatosArticulos(0, 5, null, null);
 	// INSTANCIAMOS EL OBJETO PARA OBTENER TODOS LOS ARTICULOS
@@ -107,6 +107,7 @@
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous">
 
+	
 	<!-- JdSlider -->
 	<!-- https://www.jqueryscript.net/slider/Carousel-Slideshow-jdSlider.html -->
 	<link rel="stylesheet" href="<?php echo $dataBlog["dominio"]; ?>vistas/css/plugins/jquery.jdSlider.css">
@@ -250,8 +251,10 @@
 
 ?>
 
-<input type="hidden" id="rutaActual" value="<?php echo $dataBlog["dominio"]; ?>">
-<script src="<?php echo $dataBlog["dominio"]; ?>vistas/js/script.js"></script>
+	<input type="hidden" id="rutaActual" value="<?php echo $dataBlog["dominio"]; ?>">
+
+	<script src="<?php echo $dataBlog["dominio"]; ?>vistas/js/script.js"></script>
+	<script src="https://unpkg.com/notie"></script>
 
 </body>
 </html>

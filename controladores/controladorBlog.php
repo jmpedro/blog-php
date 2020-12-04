@@ -12,11 +12,11 @@
 
         }
 
-        static public function ctrTraerDatosCategorias() {
+        static public function ctrTraerDatosCategorias($item, $value) {
 
             $table = "categorias";
 
-            $response = ModeloBlog::mdlTraerDatosCategorias($table);
+            $response = ModeloBlog::mdlTraerDatosCategorias($table, $item, $value);
 
             return $response;
 
@@ -146,6 +146,29 @@
                 }
 
             }
+
+        }
+
+        // ACTUALIZAMOS LAS VISITAS DE LOS ARTICULOS
+        static public function ctrActualizarVisitas($idArticulo) {
+
+            $articulo = ControladorBlog::ctrTraerDatosArticulos( 0, 1, "id_articulo", $idArticulo );
+            $newsVisitas = $articulo[0]["vistas_articulo"] + 1;
+
+            $table = "articulos";
+            $response = ModeloBlog::mdlActualizarVisitas($table, $newsVisitas, $idArticulo);
+
+            return $response;
+        }
+
+        // OBTENEMOS LOS ARTICULOS DESTACADOS
+        static public function ctrMostrarArticulosDestacados($item, $value) {
+
+            $table = "articulos";
+
+            $response = ModeloBlog::mdlMostrarArticulosDestacados($table, $item, $value);
+
+            return $response;
 
         }
     }

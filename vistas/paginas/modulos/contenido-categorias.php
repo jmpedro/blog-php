@@ -43,9 +43,11 @@
 
 	}
 
+	$articulosDestacadosCategoria = ControladorBlog::ctrMostrarArticulosDestacados("id_cat", $articulos[0]["id_cat"]);
+
 ?>
 
-<div class="container-fluid bg-white contenidoInicio py-2 py-md-4">
+<div class="container-fluid bg-white contenidoInicio pb-4 py-2 py-md-4">
 	
 	<div class="container">
 
@@ -104,6 +106,7 @@
 					<hr class="mb-4 mb-lg-5" style="border: 1px solid #79FF39">
 
 				<?php endforeach ?>
+			</div>
 			
 			<div class="container d-none d-md-block">
 					
@@ -144,81 +147,40 @@
 					
 					<h4>Artículos Destacados</h4>
 
-					<div class="d-flex my-3">
+					<?php foreach($articulosDestacadosCategoria as $key => $value): 
 						
-						<div class="w-100 w-xl-50 pr-3 pt-2">
-							
-							<a href="articulos.html">
-
-								<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/articulo01.png" alt="Lorem ipsum dolor sit amet" class="img-fluid">
-
-							</a>
-
-						</div>
-
-						<div>
-
-							<a href="articulos.html" class="text-secondary">
-
-								<p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-
-							</a>
-
-						</div>
-
-					</div>
-
-					<div class="d-flex my-3">
+						// Cogemos la ruta de la categoria mediante el id_cat
+						$categorias = ControladorBlog::ctrTraerDatosCategorias("id_categoria", $value["id_cat"]);
 						
-						<div class="w-100 w-xl-50 pr-3 pt-2">
-							
-							<a href="articulos.html">
+					?>
 
-								<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/articulo02.png" alt="Lorem ipsum dolor sit amet" class="img-fluid">
-
-							</a>
-
-						</div>
-
-						<div>
-
-							<a href="articulos.html" class="text-secondary">
-
-								<p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-
-							</a>
-
-						</div>
-
-					</div>
-
-					<div class="d-flex my-3">
+						<div class="d-flex my-3">
 						
-						<div class="w-100 w-xl-50 pr-3 pt-2">
-							
-							<a href="articulos.html">
+							<div class="w-100 w-xl-50 pr-3 pt-2">
+								
+								<a href="<?php echo $dataBlog["dominio"].$categorias[0]["ruta_categoria"]."/".$value["p_claves_articulo"]; ?>">
 
-								<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/articulo03.png" alt="Lorem ipsum dolor sit amet" class="img-fluid">
+									<img src="<?php echo $dataBlog["dominio"].$value["portada_articulo"]; ?>" 
+									alt="<?php echo $value["titulo_articulo"]; ?>" class="img-fluid">
 
-							</a>
+								</a>
+
+							</div>
+
+							<div>
+
+								<a href="<?php echo $dataBlog["dominio"].$categorias[0]["ruta_categoria"]."/".$value["p_claves_articulo"]; ?>" class="text-secondary">
+
+									<p class="small"><?php echo substr($value["descripcion_articulo"], 0, -150)."..."; ?></p>
+
+								</a>
+
+							</div>
 
 						</div>
 
-						<div>
-
-							<a href="articulos.html" class="text-secondary">
-
-								<p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-
-							</a>
-
-						</div>
-
-					</div>
-
-
-				</div>
-
+					<?php endforeach ?>
+					
 				<!-- PUBLICIDAD -->
 
 				<div class="mb-4">

@@ -163,14 +163,6 @@ DESLIZADOR DE ARTÍCULOS
 
 //$('.social-share').shapeShare();
 
-if(document.querySelector(".opiniones").childNodes.length == 1) {
-
-	$(".opiniones").html(`
-	
-		<p class="pl-3 text-secondary">¡Este artículo no tiene opiniones!</p>
-
-	`);
-}
 
 /*=============================================
 ENVIAR OPINIONES

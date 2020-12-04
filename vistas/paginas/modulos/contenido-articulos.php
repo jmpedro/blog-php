@@ -8,6 +8,21 @@
 		$totalArticulos = ControladorBlog::ctrGetAllArticulos("id_cat", $articulo[0]["id_cat"]);
 		// INSTANCIAMOS EL OBJETO DE LAS OPINIONES
 		$opiniones = ControladorBlog::ctrMostrarOpiniones("id_art", $articulo[0]["id_articulo"]);
+		// ACTUALIZAMOS LAS VISITAS QUE TIENE CADA ARTICULO POR SU ID
+		$cantidad_visitas = ControladorBlog::ctrActualizarVisitas($articulo[0]["id_articulo"]);
+
+	}
+
+	/* FUNCION PARA LIMITAR EL FOREACH */
+	function limitarForEach($array, $limite) {
+
+		foreach ($array as $key => $value) {
+		
+			if( !$limite-- )return;
+			
+			// yield pausa el bucle y devuelve el resultado, despues continua con las iteraciones
+			yield $key => $value;
+		}
 
 	}
 
@@ -186,7 +201,7 @@ CONTENIDO ARTÍCULO
 							
 							<ul class="slide-area">
 								
-								<?php foreach($totalArticulos as $key => $value): ?>
+								<?php foreach( $totalArticulos as $key => $value): ?>
 
 									<li class="px-3">
 										
@@ -342,6 +357,36 @@ CONTENIDO ARTÍCULO
 						
 							$enviarOpiniones = ControladorBlog::ctrEnviarOpinion();
 
+							// Controlamos la respuesta que venga al enviar la opinion con notie.js
+							if( $enviarOpiniones != "" ) {
+
+								echo '<script>
+									
+									if(window.history.replaceState) {
+
+										window.history.replaceState( null, null, window.location.href );
+
+									}
+
+								</script>';
+
+								if( $enviarOpiniones == "ok" ) {
+
+									echo '<div class="alert alert-success">La opinion ha sido enviada correctamente</div>';
+
+								}else if( $enviarOpiniones == "error" ) {
+
+									echo '<div class="alert alert-danger">No se permiten carácteres especiales</div>';
+
+								}else {
+
+									echo '<div class="alert alert-danger">El archivo debe tener un formato jpg o png </div>';
+
+								}
+
+							}
+
+
 						?>
 
 					</form>
@@ -365,81 +410,35 @@ CONTENIDO ARTÍCULO
 					
 					<h4>Artículos Recientes</h4>
 
-					<div class="d-flex my-3">
-						
-						<div class="w-100 w-xl-50 pr-3 pt-2">
+					<?php foreach( limitarForEach($totalArticulos, 3) as $key => $value ): ?>
+
+						<div class="d-flex my-3">
 							
-							<a href="articulos.html">
+							<div class="w-100 w-xl-50 pr-3 pt-2">
+								
+								<a href="<?php echo $dataBlog["dominio"].$articulo[0]["ruta_categoria"]."/".$value["p_claves_articulo"]; ?>">
 
-								<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/articulo05.png" alt="Lorem ipsum dolor sit amet" class="img-fluid">
+									<img src="<?php echo $dataBlog["dominio"].$value["portada_articulo"]; ?>" alt="<?php echo $value["titulo_articulo"]; ?>" class="img-fluid">
 
-							</a>
+								</a>
 
-						</div>
+							</div>
 
-						<div>
+							<div>
 
-							<a href="articulos.html" class="text-secondary">
+								<a href="<?php echo $dataBlog["dominio"].$articulo[0]["ruta_categoria"]."/".$value["p_claves_articulo"]; ?>" class="text-secondary">
 
-								<p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+									<p class="small"><?php echo substr($value["descripcion_articulo"], 0, -150)."..."; ?></p>
 
-							</a>
+								</a>
 
-						</div>
-
-					</div>
-
-					<div class="d-flex my-3">
-						
-						<div class="w-100 w-xl-50 pr-3 pt-2">
-							
-							<a href="articulos.html">
-
-								<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/articulo06.png" alt="Lorem ipsum dolor sit amet" class="img-fluid">
-
-							</a>
+							</div>
 
 						</div>
 
-						<div>
-
-							<a href="articulos.html" class="text-secondary">
-
-								<p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-
-							</a>
-
-						</div>
-
-					</div>
-
-					<div class="d-flex my-3">
-						
-						<div class="w-100 w-xl-50 pr-3 pt-2">
-							
-							<a href="articulos.html">
-
-								<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/articulo07.png" alt="Lorem ipsum dolor sit amet" class="img-fluid">
-
-							</a>
-
-						</div>
-
-						<div>
-
-							<a href="articulos.html" class="text-secondary">
-
-								<p class="small">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-
-							</a>
-
-						</div>
-
-					</div>
-
-
-				</div>
-
+					<?php endforeach ?>
+					
+					
 				<!-- PUBLICIDAD -->
 
 				<div class="mb-4">
