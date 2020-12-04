@@ -181,6 +181,10 @@
 					$validarRuta = "categorias";
 					break;
 	
+				}else {
+
+					$validarRuta = "buscador";
+
 				}
 				
 			}
@@ -219,6 +223,11 @@
 		if( $validarRuta == "categorias") {
 
 			include "paginas/categorias.php";
+
+		}else if( $validarRuta == "buscador" ){
+
+			include "paginas/buscador.php";
+
 
 		}else if( $validarRuta == "articulos" ){
 

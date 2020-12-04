@@ -171,4 +171,25 @@
             return $response;
 
         }
+
+        // HACEMOS EL FILTRO PARA OBTENER ARTICULOS POR EL BUSCADOR
+        static public function ctrBuscador($desde, $cantidad, $busqueda) {
+
+            $table1 = "categorias";
+            $table2 = "articulos";
+
+            $response = ModeloBlog::mdlBuscador($table1, $table2, $desde, $cantidad, $busqueda);
+
+            return $response;
+
+        }
+        
+        // OBTENEMOS TODOS LOS ARTICULOS QUE SE ENCUENTREN EN EL BUSCADOR
+        static public function ctrBuscadorArticulosTotales($busqueda) {
+
+            $table = "articulos";
+            $response = ModeloBlog::mdlBuscadorArticulosTotales($table, $busqueda);
+            return $response;
+
+        }
     }

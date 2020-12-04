@@ -95,7 +95,7 @@ PAGINACIÓN
 =============================================*/
 
 var paginasTotales = Number($(".pagination").attr("totalPaginas"));
-var rutaActual = $("#rutaActual").val();
+var rutaActual = $("#rutaActual").val();// rutaActual es la ruta del dominio
 var paginaActual = Number($(".pagination").attr("paginaActual"));
 var rutaPagina = $(".pagination").attr("rutaPagina");
 
@@ -206,3 +206,70 @@ $("#fotoOpinion").change(function(){
 	}
 
 })
+
+/*=============================================
+BUSCADOR 
+=============================================*/
+
+$(".buscador").change(function() {
+
+	let busqueda = $(this).val().toLowerCase();
+	let expresion = /^[a-z0-9áéíóúñ ]*$/;
+
+	if(!expresion.test(busqueda)) {
+		// Si el .test devuelve false significa que no se cumplen los requisitos de la expresion, por lo tanto ponemos
+		// el valor a vacio
+		$(".buscador").val("");
+		
+	}else {
+		// si la busqueda contiene vocales con acento o espacios, en la url se sustituirán con "_"
+		let rutaBuscador = busqueda.replace(/[0-9áéíóúñ ]/g, "_");
+
+		// cuando hagamos click en la lupa para buscar, nos llevará a la url deseada
+		$(".buscar").click(function() {
+
+			if( $(".buscador").val() != "" ) {
+				
+				window.location = rutaActual + rutaBuscador;
+
+			}
+
+		});
+
+	}
+	
+});
+
+/*=============================================
+BUSCADOR CON ENTER
+=============================================*/
+
+// Indicamos que cuando se pulse una tecla en el objeto que contiene la clase .buscador, se realice la siguiente funcion
+$(document).on("keyup", ".buscador", function(event) {
+
+	/* Para poder asignarle a las teclas una nueva función, debemos restablecer sus valores por defecto y eso se hace
+	con la siguiente linea */
+	event.preventDefault();
+
+	// Si la tecla pulsada es el 13(es el codigo del enter) y hemos escrito algo en el buscador, se realiza lo siguiente
+	if( event.keyCode == 13 && $(".buscador").val() != "" ) {
+
+		let busqueda = $(this).val().toLowerCase();
+		let expresion = /^[a-z0-9áéíóúñ ]*$/;
+
+		if(!expresion.test(busqueda)) {
+			// Si el .test devuelve false significa que no se cumplen los requisitos de la expresion, por lo tanto ponemos
+			// el valor a vacio
+			$(".buscador").val("");
+			
+		}else {
+			// si la busqueda contiene vocales con acento o espacios, en la url se sustituirán con "_"
+			let rutaBuscador = busqueda.replace(/[0-9áéíóúñ ]/g, "_");
+			window.location = rutaActual + rutaBuscador;
+
+		}
+
+	}
+
+
+});

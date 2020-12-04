@@ -47,7 +47,7 @@
 
 ?>
 
-<div class="container-fluid bg-white contenidoInicio pb-4 py-2 py-md-4">
+<div class="container-fluid bg-white contenidoInicio py-2 py-md-4">
 	
 	<div class="container">
 
@@ -106,15 +106,15 @@
 					<hr class="mb-4 mb-lg-5" style="border: 1px solid #79FF39">
 
 				<?php endforeach ?>
-			</div>
-			
-			<div class="container d-none d-md-block">
-					
-				<ul class="pagination justify-content-center" 
-					totalPaginas="<?php echo $totalPaginas; ?>"
-					paginaActual="<?php echo $paginaActual; ?>"
-					rutaPagina="<?php echo $articulos[0]["ruta_categoria"]; ?>"></ul>
 
+				<div class="container d-none d-md-block">
+					
+					<ul class="pagination justify-content-center" 
+						totalPaginas="<?php echo $totalPaginas; ?>"
+						paginaActual="<?php echo $paginaActual; ?>"
+						rutaPagina="<?php echo $articulos[0]["ruta_categoria"]; ?>"></ul>
+
+				</div>
 			</div>
 
 			<!-- COLUMNA DERECHA -->

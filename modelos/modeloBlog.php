@@ -202,15 +202,64 @@
                 vistas_articulo DESC LIMIT 3");
 
                 if( $stmt->execute() ) {
+
                     return $stmt->fetchAll();
+
                 }else {
+
                     print_r (Connection::connect()->errorInfo());
+
                 }
 
                 $stmt->close();
                 $stmt = null;
 
             }
+
+        }
+
+        // FILTRAMOS ARTICULOS POR EL BUSCADOR
+        static public function mdlBuscador($table1, $table2, $desde, $cantidad, $busqueda) {
+
+            $stmt = Connection::connect()->prepare("SELECT $table1.*, $table2.*, DATE_FORMAT(fecha_articulo, '%d.%m.%Y')
+            AS fecha_articulo FROM $table1 INNER JOIN $table2 ON $table1.id_categoria = $table2.id_cat WHERE 
+            titulo_articulo LIKE '%$busqueda%' OR descripcion_articulo LIKE '%$busqueda%' OR ruta_articulo LIKE 
+            '%$busqueda%' ORDER BY $table2.fecha_articulo DESC LIMIT $desde, $cantidad ");
+            
+            if( $stmt->execute() ) {
+
+                return $stmt->fetchAll();
+
+            }else {
+
+                print_r (Connection::connect()->errorInfo());
+                
+            }
+
+            $stmt->close();
+            $stmt = null;
+
+        }
+
+        // OBTENEMOS TODOS LOS ARTICULOS QUE SE ENCUENTREN POR EL BUSCADOR
+        static public function mdlBuscadorArticulosTotales($table, $busqueda) {
+
+            $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE 
+            titulo_articulo LIKE '%$busqueda%' OR descripcion_articulo LIKE '%$busqueda%' OR ruta_articulo LIKE 
+            '%$busqueda%' ");
+
+            if( $stmt->execute() ) {
+
+                return $stmt->fetchAll();
+
+            }else {
+
+                print_r (Connection::connect()->errorInfo());
+                
+            }
+
+            $stmt->close();
+            $stmt = null;
 
         }
     }
