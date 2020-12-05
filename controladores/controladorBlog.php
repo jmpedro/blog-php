@@ -192,4 +192,13 @@
             return $response;
 
         }
+
+        // OBTENEMOS TODOS LOS ANUNCIOS 
+        static public function ctrMostrarAnuncios($value) {
+
+            $table = "anuncios";
+            $response = ModeloBlog::mdlMostrarAnuncios($table, $value);
+            return $response;
+
+        }
     }

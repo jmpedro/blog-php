@@ -10,7 +10,23 @@
         $totalPaginas = ceil(count($totalArticulos)/5);
         $paginaActual = 1;
 
-    }
+	}
+	
+	/* CONTROLAMOS LA PAGINACIÓN DE LOS ARTICULOS CON EL BUSCADOR */
+	if( isset($ruta[1]) && is_numeric($ruta[1]) ) {
+
+		$paginaActual = $ruta[1];
+
+		$cantidad = 5;
+		$desde = ($ruta[1] - 1) * $cantidad;
+
+		$dataArticuloCat = ControladorBlog::ctrBuscador($desde, $cantidad, $ruta[0]);
+
+	}else {
+
+		$paginaActual = 1;
+
+	}
 
 	
 
@@ -84,7 +100,7 @@
                         <ul class="pagination justify-content-center" 
                             totalPaginas="<?php echo $totalPaginas; ?>"
                             paginaActual="<?php echo $paginaActual; ?>"
-                            rutaPagina></ul>
+                            rutaPagina="<?php echo $ruta[0]; ?>"></ul>
 
                     </div>
                 
@@ -104,14 +120,6 @@
 			<!-- COLUMNA DERECHA -->
 
 			<div class="d-none d-md-block pt-md-4 pt-lg-0 col-md-4 col-lg-3">
-
-				<!-- SOBRE MI -->
-
-				<div class="sobreMi">
-
-					<p class="small"> <?php echo $dataBlog["sobre_mi"]; ?> </p>
-
-				</div>
 
 				<!-- Artículos destacados -->
 

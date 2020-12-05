@@ -26,6 +26,8 @@
 
 	}
 
+	$anuncios = ControladorBlog::ctrMostrarAnuncios("articulos");
+
 ?>
 
 <!--=====================================
@@ -136,27 +138,17 @@ CONTENIDO ARTÍCULO
 
 						<h4>Etiquetas</h4>
 	
-							<a href="#suramerica" class="btn btn-secondary btn-sm m-1">suramerica</a> 		
+						<?php
+						 
+						 $tags = json_decode($articulo[0]["ruta_articulo"], true);
+
+						?>
+
+						<?php foreach ($tags as $key => $value): ?>
 						
-							<a href="#colombia" class="btn btn-secondary btn-sm m-1">colombia</a> 							
-						
-							<a href="#peru" class="btn btn-secondary btn-sm m-1">peru</a> 							
-						
-							<a href="#argentina" class="btn btn-secondary btn-sm m-1">argentina</a> 							
-						
-							<a href="#chile" class="btn btn-secondary btn-sm m-1">chile</a> 							
-						
-							<a href="#brasil" class="btn btn-secondary btn-sm m-1">brasil</a> 							
-						
-							<a href="#ecuador" class="btn btn-secondary btn-sm m-1">ecuador</a> 							
-						
-							<a href="#venezuela" class="btn btn-secondary btn-sm m-1">venezuela</a> 
-							
-							<a href="#paraguay" class="btn btn-secondary btn-sm m-1">paraguay</a> 
-							
-							<a href="#uruguay" class="btn btn-secondary btn-sm m-1">uruguay</a> 
-						
-							<a href="#bolivia" class="btn btn-secondary btn-sm m-1">bolivia</a> 
+							<a href="#<?php echo $dataBlog["dominio"].preg_replace('/[0-9áéíóúñ ]/', "_", $value); ?>" class="btn btn-secondary btn-sm m-1"><?php echo $value; ?></a> 	
+
+						<?php endforeach ?>	
 																		
 					</div>
 
@@ -441,23 +433,15 @@ CONTENIDO ARTÍCULO
 					
 				<!-- PUBLICIDAD -->
 
-				<div class="mb-4">
+				<?php 
+				
+					foreach ($anuncios as $key => $value) {
 					
-					<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/ad03.png" class="img-fluid">
+						echo $value["codigo_anuncio"];
 
-				</div>
+					} 
 
-				<div class="my-4">
-					
-					<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/ad02.jpg" class="img-fluid">
-
-				</div>	
-
-				<div class="my-4">
-					
-					<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/ad06.png" class="img-fluid">
-
-				</div>	
+				?>
 				
 			</div>
 

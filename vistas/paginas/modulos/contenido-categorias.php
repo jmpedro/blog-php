@@ -45,6 +45,8 @@
 
 	$articulosDestacadosCategoria = ControladorBlog::ctrMostrarArticulosDestacados("id_cat", $articulos[0]["id_cat"]);
 
+	$anuncios = ControladorBlog::ctrMostrarAnuncios("categorias");
+
 ?>
 
 <div class="container-fluid bg-white contenidoInicio py-2 py-md-4">
@@ -135,7 +137,7 @@
 
 						<?php foreach ($tags as $key => $value): ?>
 						
-							<a href="#<?php echo $value; ?>" class="btn btn-secondary btn-sm m-1"><?php echo $value; ?></a> 	
+							<a href="<?php echo $dataBlog["dominio"].preg_replace('/[0-9áéíóúñ ]/', "_", $value); ?>" class="btn btn-secondary btn-sm m-1"><?php echo $value; ?></a> 	
 
 						<?php endforeach ?>			
 					
@@ -183,23 +185,15 @@
 					
 				<!-- PUBLICIDAD -->
 
-				<div class="mb-4">
+				<?php 
+				
+					foreach ($anuncios as $key => $value) {
 					
-					<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/ad03.png" class="img-fluid">
+						echo $value["codigo_anuncio"];
 
-				</div>
+					} 
 
-				<div class="my-4">
-					
-					<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/ad02.jpg" class="img-fluid">
-
-				</div>	
-
-				<div class="my-4">
-					
-					<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/ad05.png" class="img-fluid">
-
-				</div>	
+				?>
 				
 			</div>
 

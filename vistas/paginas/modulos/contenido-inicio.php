@@ -12,6 +12,9 @@
 
 	$articulosDestacadosInicio = ControladorBlog::ctrMostrarArticulosDestacados(null, null);
 
+	/* OBTENEMOS LOS ANUNCIOS DE LA BASE DE DATOS */
+	$anuncios = ControladorBlog::ctrMostrarAnuncios("inicio");
+
 ?>
 
 <div class="container-fluid bg-white contenidoInicio pb-4">
@@ -133,23 +136,11 @@
 
 				<!-- PUBLICIDAD -->
 
-				<div class="my-4">
+				<?php foreach ($anuncios as $key => $value): ?>
 					
-					<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/ad01.jpg" class="img-fluid">
+					<?php echo $value["codigo_anuncio"]; ?>
 
-				</div>
-
-				<div class="my-4">
-					
-					<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/ad02.jpg" class="img-fluid">
-
-				</div>	
-
-				<div class="my-4">
-					
-					<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/ad05.png" class="img-fluid">
-
-				</div>	
+				<?php endforeach ?>
 				
 			</div>
 

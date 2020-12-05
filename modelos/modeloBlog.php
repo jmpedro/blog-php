@@ -223,7 +223,7 @@
 
             $stmt = Connection::connect()->prepare("SELECT $table1.*, $table2.*, DATE_FORMAT(fecha_articulo, '%d.%m.%Y')
             AS fecha_articulo FROM $table1 INNER JOIN $table2 ON $table1.id_categoria = $table2.id_cat WHERE 
-            titulo_articulo LIKE '%$busqueda%' OR descripcion_articulo LIKE '%$busqueda%' OR ruta_articulo LIKE 
+            titulo_articulo LIKE '%$busqueda%' OR descripcion_articulo LIKE '%$busqueda%' OR contenido_articulo LIKE 
             '%$busqueda%' ORDER BY $table2.fecha_articulo DESC LIMIT $desde, $cantidad ");
             
             if( $stmt->execute() ) {
@@ -245,8 +245,30 @@
         static public function mdlBuscadorArticulosTotales($table, $busqueda) {
 
             $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE 
-            titulo_articulo LIKE '%$busqueda%' OR descripcion_articulo LIKE '%$busqueda%' OR ruta_articulo LIKE 
+            titulo_articulo LIKE '%$busqueda%' OR descripcion_articulo LIKE '%$busqueda%' OR contenido_articulo LIKE 
             '%$busqueda%' ");
+
+            if( $stmt->execute() ) {
+
+                return $stmt->fetchAll();
+
+            }else {
+
+                print_r (Connection::connect()->errorInfo());
+                
+            }
+
+            $stmt->close();
+            $stmt = null;
+
+        }
+
+        // OBTENEMOS TODOS LOS ANUNCIOS 
+        static public function mdlMostrarAnuncios($table, $value) {
+
+            $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE pagina_anuncio = :pagina_anuncio");
+
+            $stmt -> bindParam(":pagina_anuncio", $value, PDO::PARAM_STR);
 
             if( $stmt->execute() ) {
 
