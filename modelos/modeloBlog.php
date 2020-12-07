@@ -284,4 +284,26 @@
             $stmt = null;
 
         }
+
+        // OBTENEMOS TODOS LOS BANNERS 
+        static public function mdlMostrarBanner($table, $value) {
+
+            $stmt = Connection::connect()->prepare("SELECT * FROM $table WHERE pagina_banner = :pagina_banner");
+
+            $stmt -> bindParam(":pagina_banner", $value, PDO::PARAM_STR);
+
+            if( $stmt->execute() ) {
+
+                return $stmt->fetchAll();
+
+            }else {
+
+                print_r (Connection::connect()->errorInfo());
+                
+            }
+
+            $stmt->close();
+            $stmt = null;
+
+        }
     }

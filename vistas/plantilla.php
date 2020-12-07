@@ -181,6 +181,11 @@
 					$validarRuta = "categorias";
 					break;
 	
+				}else if( $ruta[0] == "sobre-mi" ) {
+				
+					$validarRuta = "sobre-mi";
+					break;
+					
 				}else {
 
 					$validarRuta = "buscador";
@@ -227,6 +232,11 @@
 		}else if( $validarRuta == "buscador" ){
 
 			include "paginas/buscador.php";
+
+
+		}else if( $validarRuta == "sobre-mi" ){
+
+			include "paginas/sobre-mi.php";
 
 
 		}else if( $validarRuta == "articulos" ){

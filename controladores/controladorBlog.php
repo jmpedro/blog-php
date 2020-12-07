@@ -201,4 +201,13 @@
             return $response;
 
         }
+
+        // OBTENEMOS TODOS LOS BANNERS
+        static public function ctrMostrarBanner($value) {
+
+            $table = "banner";
+            $response = ModeloBlog::mdlMostrarBanner($table, $value);
+            return $response;
+
+        }
     }

@@ -1,3 +1,10 @@
+<?php 
+
+	$banner = ControladorBlog::ctrMostrarBanner("inicio");
+
+?>
+
+
 <!--=====================================
 BANNER
 ======================================-->
@@ -9,30 +16,16 @@ BANNER
 	<div class="slide-inner">
 		
 		<ul class="slide-area">
-			
-			<li>
-				
-				<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/banner01.jpg" class="img-fluid">
 
-			</li>
+			<?php foreach ($banner as $key => $value): ?>
 
-			<li>
-				
-				<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/banner02.jpg" class="img-fluid">
+				<li>
+					
+					<img src="<?php echo $dataBlog["dominio"].$value["img_banner"]; ?>" class="img-fluid">
 
-			</li>
+				</li>
 
-			<li>
-				
-				<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/banner03.jpg" class="img-fluid">
-
-			</li>
-
-			<li>
-				
-				<img src="<?php echo $dataBlog["dominio"]; ?>vistas/img/banner04.jpg" class="img-fluid">
-
-			</li>
+			<?php endforeach ?>
 
 		</ul>
 
