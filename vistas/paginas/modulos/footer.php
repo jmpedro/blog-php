@@ -89,16 +89,43 @@ FOOTER
 			<div class="col-md-5 col-lg-5 col-xl-4 pt-5">
 				
 				<h6 class="text-white">Inscríbete en nuestro newletter:</h6>
+				
+				<!-- Begin Mailchimp Signup Form -->
+				<div id="mc_embed_signup">
 
-				<div class="input-group my-4">
-					
-					<input type="text" class="form-control" placeholder="Ingresa tu Email">
+					<form action="https://gmail.us7.list-manage.com/subscribe/post?u=55c9b6dd2066351c065f754ab&amp;id=5d6222ee24" 
+					method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 
-					<div class="input-group-append">
+						<div class="mc-field-group">
 						
-						<span class="input-group-text bg-dark text-white">Inscribirse</span>
+							<div class="input-group my-4">
+								
+								<input type="text" class="form-control required email" id="mce-EMAIL" placeholder="Ingresa tu Email">
 
-					</div>
+								<div class="input-group-append">
+									
+									<span class="input-group-text bg-dark text-white">
+									
+										<input type="submit" value="Subscribirse" name="subscribe" id="mc-embedded-subscribe" class="btn btn-dark btn-sm text-white p-0">
+
+									</span>
+
+								</div>
+
+							</div>
+							
+							<div id="mce-responses" class="clear">
+
+								<div class="response" id="mce-error-response" style="display:none"></div>
+								<div class="response" id="mce-success-response" style="display:none"></div>
+
+							</div>  
+							<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+							<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_55c9b6dd2066351c065f754ab_5d6222ee24" tabindex="-1" value=""></div>
+
+						</div>
+
+					</form>
 
 				</div>
 

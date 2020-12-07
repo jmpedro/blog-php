@@ -17,9 +17,9 @@
                 
                 <form method="post">
                 
-                    <input type="text" name="nombreContacto" class="form-control my-3" placeholder="Nombre y Apellidos">
-                    <input type="email" name="emailContacto" class="form-control my-3" placeholder="Correo electrónico">
-                    <textarea name="mensajeContacto" class="form-control my-3" cols="30" rows="10"></textarea>
+                    <input type="text" name="nombreContacto" class="form-control my-3" placeholder="Nombre y Apellidos" required>
+                    <input type="email" name="emailContacto" class="form-control my-3" placeholder="Correo electrónico" required>
+                    <textarea name="mensajeContacto" class="form-control my-3" cols="30" rows="10" required></textarea>
                     <input type="submit" value="Enviar" class="btn btn-primary">
 
                     <?php
