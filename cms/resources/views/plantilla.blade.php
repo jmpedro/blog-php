@@ -49,7 +49,7 @@
 
         @include('modules/header')
         @include('modules/sidebar')
-        @include('pages/home')
+        @yield('content')
         @include('modules/footer')
 
     </div>

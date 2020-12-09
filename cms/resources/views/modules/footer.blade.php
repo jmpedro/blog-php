@@ -1,7 +1,11 @@
 <footer class="main-footer">
-    <strong>Copyright © 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.5
-    </div>
-  </footer>
+  <div class="float-right d-sm-block">Todos los derechos reservados</div>
+  
+  <strong>Copyright © 
+    @php
+      echo date('Y');
+    @endphp 
+    <a href="{{ substr(url('/'), 0, -11) }}" target="_blank">Code Software</a>
+  </strong>
+
+</footer>
