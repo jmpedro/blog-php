@@ -7,7 +7,7 @@ use App\CategoriaModel;
 
 class CategoriaController extends Controller
 {
-    public function getCategoria() {
+    public function index() {
 
         $categorias = CategoriaModel::all();
     

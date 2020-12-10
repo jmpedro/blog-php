@@ -8,7 +8,7 @@ use App\BlogModel;
 class BlogController extends Controller
 {
     
-    public function getBlog() {
+    public function index() {
 
         // Para indicar que queremos hacer un select de todo lo que hay en la tabla, llamamos a la clase del modelo y al método estático all()
         $blog = BlogModel::all();

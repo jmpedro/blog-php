@@ -8,7 +8,7 @@ use App\AnuncioModel;
 class AnuncioController extends Controller
 {
     
-    public function getAnuncios() {
+    public function index() {
 
         $anuncios = AnuncioModel::all();
 

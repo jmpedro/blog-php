@@ -7,7 +7,7 @@ use App\AdministradorModel;
 
 class AdministradorController extends Controller
 {
-    public function getUsers() {
+    public function index() {
 
         $users = AdministradorModel::all();
 

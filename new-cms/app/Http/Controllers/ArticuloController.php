@@ -8,7 +8,7 @@ use App\ArticuloModel;
 class ArticuloController extends Controller
 {
 
-    public function getArticulo() {
+    public function index() {
 
         $articulos = ArticuloModel::all();
 

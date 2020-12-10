@@ -8,7 +8,7 @@ use App\BannerModel;
 class BannerController extends Controller
 {
     
-    public function getBanner() {
+    public function index() {
 
         $banners = BannerModel::all();
 

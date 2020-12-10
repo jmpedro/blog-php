@@ -1,0 +1,8 @@
+
+/* 
+
+    *****  SUMMERNOTE  ***** 
+
+*/
+
+$(".summernote").summernote();

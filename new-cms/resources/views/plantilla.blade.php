@@ -20,6 +20,12 @@
     {{-- GOOGLE FONTS --}}
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
+    {{-- TAGS INPUT --}}
+    <link rel="stylesheet" href="{{ url('/') }}/css/plugins/tagsinput.css">
+
+    {{-- SUMMERNOTE --}}
+    <link rel="stylesheet" href="{{ url('/') }}/css/plugins/summernote.css">
+
 
     {{-- **** PLUGINS DE JS **** --}}
 
@@ -40,6 +46,12 @@
 
     {{-- jquery.overlayScrollbars.min.js --}}
     <script src="{{ url('/') }}/js/plugins/jquery.overlayScrollbars.min.js"></script>
+    
+    {{-- TAGS INPUT --}}
+    <script src="{{ url('/') }}/js/plugins/tagsinput.js"></script>
+
+    {{-- SUMMERNOTE --}}
+    <script src="{{ url('/') }}/js/plugins/summernote.js"></script>
 
 </head>
 
@@ -53,6 +65,8 @@
         @include('modules/footer')
 
     </div>
+
+    <script src="{{ url('/') }}/js/codigo_personalizado.js"></script>
 
 </body>
 

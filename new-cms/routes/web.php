@@ -36,3 +36,14 @@ Route::get('/banner', 'BannerController@getBanner');
 Route::get('/categorias', 'CategoriaController@getCategoria');
 Route::get('/opiniones', 'OpinionController@getOpinion');
 
+/* Para evitar tener que estar llamando manualmente a cada controlador y cada vista, podemos usar el metodo resource(), que nos 
+   devuelve todos los métodos posibles */
+   // php artisan route:list para ver el nombre que debemos ponerle a nuestros métodos 
+Route::resource('/', 'BlogController');
+Route::resource('/administradores', 'AdministradorController');
+Route::resource('/anuncios', 'AnuncioController');
+Route::resource('/articulos', 'ArticuloController');
+Route::resource('/banner', 'BannerController');
+Route::resource('/categorias', 'CategoriaController');
+Route::resource('/opiniones', 'OpinionController');
+
