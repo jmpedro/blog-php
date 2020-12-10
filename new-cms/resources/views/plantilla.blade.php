@@ -26,6 +26,9 @@
     {{-- SUMMERNOTE --}}
     <link rel="stylesheet" href="{{ url('/') }}/css/plugins/summernote.css">
 
+    {{-- NOTIE --}}
+    <link rel="stylesheet" href="{{ url('/') }}/css/plugins/notie.css">
+
 
     {{-- **** PLUGINS DE JS **** --}}
 
@@ -52,6 +55,9 @@
 
     {{-- SUMMERNOTE --}}
     <script src="{{ url('/') }}/js/plugins/summernote.js"></script>
+
+    {{-- NOTIE --}}
+    <script src="{{ url('/') }}/js/plugins/notie.js"></script>
 
 </head>
 
