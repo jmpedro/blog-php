@@ -12,7 +12,7 @@
 
           <div class="col-sm-6">
 
-            <h1>Administradores</h1>
+            <h1>Blog</h1>
 
           </div>
 
@@ -56,7 +56,7 @@
 
                 <div class="card-header">
 
-                  <h4>Datos del blog</h4>
+                  <button type="submit" class="btn btn-primary float-right ">Guardar cambios</button>
 
                 </div>
 
@@ -132,17 +132,18 @@
                               @php
                               
                                 $tags = json_decode($value->palabras_clave, true);
+            
                                 $palabras_clave = "";
 
                                 foreach ($tags as $key => $valueTags) {
                                   
-                                    $palabras_clave .= $valueTags.", ";
+                                    $palabras_clave .= $valueTags.",";
 
                                 }
 
                               @endphp
 
-                              <input type="text" name="palabras_clave" class="form-control" value="{{ $palabras_clave }}" 
+                              <input type="text" name="palabras_clave" class="form-control" value="{{$palabras_clave}}" 
                               data-role="tagsinput" required>
 
                             </div>
@@ -207,10 +208,12 @@
                             </div>
                             {{-- Fin del row --}}
 
-                            <div class="row">
+                            <div class="row listado">
                               
                               @php
-                                  
+                                
+                                echo "<input type='hidden' name='redes_sociales' value='".$value->redes_sociales."' id='listaRedes'>";
+
                                 $redes = json_decode($value->redes_sociales, true);
                                 
                                 foreach ($redes as $key => $valueRedes) {
@@ -236,7 +239,7 @@
 
                                         <div class="input-group-text" style="cursor:pointer">
 
-                                          <span class="bg-danger px-2 rounded-circle">&times;</span>
+                                          <span class="bg-danger px-2 rounded-circle eliminarRed" url="'.$valueRedes["url"].'" >&times;</span>
 
                                         </div>
 
@@ -277,8 +280,10 @@
                                     <input type="file" name="logo">
 
                                   </div>
+                                  
+                                  <br>
 
-                                  <img src="{{ url('/') }}/{{ $value->logo }}" class="img-fluid py-2 bg-secondary">
+                                  <img src="{{ url('/') }}/{{ $value->logo }}" class="img-fluid py-2 bg-secondary imgTemporal_logo">
                                   <p class="help-block small mt-3">Dimensiones: 700px * 200px | Peso Máx: 2MB | Formato: JPG/PNG</p>
 
                                 </div>
@@ -295,7 +300,9 @@
 
                                   </div>
 
-                                  <img src="{{ url('/') }}/{{ $value->portada }}" class="img-fluid py-2">
+                                  <br>
+
+                                  <img src="{{ url('/') }}/{{ $value->portada }}" class="img-fluid py-2 imgTemporal_portada">
                                   <p class="help-block small mt-3">Dimensiones: 700px * 420px | Peso Máx: 3MB | Formato: JPG/PNG</p>
 
                                 </div>
@@ -314,7 +321,7 @@
 
                                   <br>
 
-                                  <img src="{{ url('/') }}/{{ $value->icono }}" class="img-fluid py-2 rounded-circle">
+                                  <img src="{{ url('/') }}/{{ $value->icono }}" class="img-fluid py-2 rounded-circle imgTemporal_icono">
                                   <p class="help-block small mt-3">Dimensiones: 150px * 150px | Peso Máx: 2MB | Formato: JPG/PNG</p>
 
                                 </div>
@@ -371,7 +378,6 @@
                 <!-- /.card-body -->
                 <div class="card-footer">
 
-                  <button type="submit" class="btn btn-primary">Guardar cambios</button>
 
                 </div>
 

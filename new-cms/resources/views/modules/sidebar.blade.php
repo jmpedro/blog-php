@@ -80,7 +80,7 @@
 
           {{-- *** Ver sitio web *** --}}
           <li class="nav-item">
-            <a href="{{ substr(url('/'), 0, -11) }}" class="nav-link" target="_blank">
+            <a href="{{ substr(url('/'), 0, -14) }}" class="nav-link" target="_blank">
               <i class="nav-icon fas fa-globe"></i>
               <p>Ver sitio web</p>
             </a>
