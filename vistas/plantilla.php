@@ -88,13 +88,13 @@
 
 			/* METADATOS DE OPEN GRAPH */
 			$datos -> ctrAsignarMetadatosOG($dataBlog["titulo"], $dataBlog["titulo"], 
-											$dataBlog["dominio"], $dataBlog["dominio"].$dataBlog["portada"]);
+											$dataBlog["servidor"], $dataBlog["servidor"].$dataBlog["portada"]);
 
 		}
 
 	?>
 
-	<link rel="icon" href="<?php echo $dataBlog["dominio"]; ?>vistas/img/icono.jpg">
+	<link rel="icon" href="<?php echo $dataBlog["servidor"].$dataBlog["icono"]; ?>">
 
 	<!--=====================================
 	PLUGINS DE CSS

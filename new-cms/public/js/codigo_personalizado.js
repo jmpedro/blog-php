@@ -1,3 +1,10 @@
+/* 
+
+    *****  CAPTURAMOS LA RUTA DE NUESTRO CMS  ***** 
+
+*/
+
+let ruta = $("#ruta").val();
 
 /* 
 
@@ -155,4 +162,81 @@ $("input[type='file']").change(function() {
 
 */
 
-$(".summernote").summernote();
+$(".summernote").summernote({
+
+    height: 300,
+    // la propiedad callbacks y su fucion onImageUpload son exclusivas del plugin summernote
+    callbacks: {
+
+        onImageUpload: function(files) {
+
+            for(let i = 0; i < files.length; i++) {
+
+                upload(files[i], false);
+
+            }
+
+        }
+
+    }
+
+});
+
+$(".summernote-completo").summernote({
+
+    height: 300,
+    // la propiedad callbacks y su fucion onImageUpload son exclusivas del plugin summernote
+    callbacks: {
+
+        onImageUpload: function(files) {
+
+            for(let i = 0; i < files.length; i++) {
+
+                upload(files[i], true);
+
+            }
+
+        }
+
+    }
+
+});
+
+// Creamos la funcion para pasar los archivos temporales a nuestra base de datos usando ajax
+function upload(file, completo) {
+
+    let data = new FormData();
+    data.append("file", file, file.name);
+    data.append("ruta", ruta);
+
+    $.ajax({
+
+        url: ruta + "/ajax/upload.php",
+        method: 'POST',
+        data: data,
+        contentType: false,
+        cache: false,
+        processData: false,
+        success: function(response) {
+            
+            // indicamos a summernote que inserte una imagen con la ruta que recibimos
+            if(completo) {
+
+                $(".summernote-completo").summernote("insertImage", response);
+
+            }else{
+
+                $(".summernote").summernote("insertImage", response);
+
+            }
+
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+
+            console.log(textStatus + " " + errorThrown);
+
+        }
+
+    });
+
+} 

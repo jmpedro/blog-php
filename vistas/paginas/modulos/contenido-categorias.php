@@ -84,7 +84,7 @@
 							</a>
 
 							<a href="<?php echo $dataBlog["dominio"].$value["ruta_categoria"]."/".$value["p_claves_articulo"]; ?>">
-								<img src="<?php echo $dataBlog["dominio"]; ?><?php echo $value["portada_articulo"]; ?>" alt="<?php echo $value["titulo_articulo"]; ?>" class="img-fluid" width="100%">
+								<img src="<?php echo $dataBlog["servidor"]; ?><?php echo $value["portada_articulo"]; ?>" alt="<?php echo $value["titulo_articulo"]; ?>" class="img-fluid" width="100%">
 							</a>
 
 						</div>
@@ -162,7 +162,7 @@
 								
 								<a href="<?php echo $dataBlog["dominio"].$categorias[0]["ruta_categoria"]."/".$value["p_claves_articulo"]; ?>">
 
-									<img src="<?php echo $dataBlog["dominio"].$value["portada_articulo"]; ?>" 
+									<img src="<?php echo $dataBlog["servidor"].$value["portada_articulo"]; ?>" 
 									alt="<?php echo $value["titulo_articulo"]; ?>" class="img-fluid">
 
 								</a>

@@ -13,7 +13,7 @@ CABECERA
 				
 				<a href="<?php echo $dataBlog["dominio"]; ?>">
 					
-					<img src="<?php echo $dataBlog["dominio"]; ?><?php echo $dataBlog["logo"]; ?>" alt="Logo de Juanito Travel" class="img-fluid logotipo">
+					<img src="<?php echo $dataBlog["servidor"].$dataBlog["logo"]; ?>" alt="Logo de Juanito Travel" class="img-fluid logotipo">
 
 				</a>
 

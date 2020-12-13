@@ -27,7 +27,7 @@ BANNER
 
 					</div>
 					
-					<img src="<?php echo $dataBlog["dominio"].$value["img_banner"]; ?>" class="img-fluid">
+					<img src="<?php echo $dataBlog["servidor"].$value["img_banner"]; ?>" class="img-fluid">
 
 				</li>	
 

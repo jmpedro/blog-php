@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tu blog | CMS</title>
 
+    <link rel="icon" href="{{ $blog[0]["icono"] }}">
+
     {{-- **** PLUGINS DE CSS **** --}}
     
     {{-- BOOSRTAP 4 --}}
@@ -71,6 +73,8 @@
         @include('modules/footer')
 
     </div>
+
+    <input type="hidden" id="ruta" value="{{ url('/') }}">
 
     <script src="{{ url('/') }}/js/codigo_personalizado.js"></script>
 

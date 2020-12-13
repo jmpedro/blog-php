@@ -47,7 +47,7 @@
 
             @endforeach
             
-            <form action="{{ url('/') }}/blog/{{$value->id}}" method="post">
+            <form action="{{ url('/') }}/blog/{{$value->id}}" method="post" enctype="multipart/form-data">
 
               @method('PUT')
               @csrf
@@ -277,7 +277,9 @@
                                   <div class="btn btn-primary btn-file mb-3 text-white">
 
                                     <i class="fas fa-paperclip mr-1"></i>Adjuntar Imagen de Logo
+
                                     <input type="file" name="logo">
+                                    <input type="hidden" name="logoActual" value="{{ $value->logo }}">
 
                                   </div>
                                   
@@ -296,7 +298,9 @@
                                   <div class="btn btn-primary btn-file mb-3 text-white">
 
                                     <i class="fas fa-paperclip mr-1"></i>Adjuntar Imagen de Portada
+
                                     <input type="file" name="portada">
+                                    <input type="hidden" name="portadaActual" value="{{ $value->portada }}">
 
                                   </div>
 
@@ -315,7 +319,9 @@
                                   <div class="btn btn-primary btn-file mb-3 text-white">
 
                                     <i class="fas fa-paperclip mr-1"></i>Adjuntar Imagen de icono
+
                                     <input type="file" name="icono">
+                                    <input type="hidden" name="iconoActual" value="{{ $value->icono }}">
 
                                   </div>
 
@@ -361,7 +367,7 @@
                           <div class="card-body">
 
                             <label>Sobre mi <span class="small">(Completo)</span></label>
-                            <textarea name="sobre_mi_completo" rows="10" class="form-control summernote">{{ $value->sobre_mi_completo }}</textarea>
+                            <textarea name="sobre_mi_completo" rows="10" class="form-control summernote-completo">{{ $value->sobre_mi_completo }}</textarea>
 
                           </div>
 
