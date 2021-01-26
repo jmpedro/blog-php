@@ -65,7 +65,6 @@ $(".agregarRedes").click(function() {
             "icono": icono,
             "background": color
         });
-        console.log(JSON.stringify(nuevoListadoRedes));
         // pasamos de JSON  string y actualizamos el nuevo valor de esta lista
         $("#listaRedes").val(JSON.stringify(nuevoListadoRedes));
 

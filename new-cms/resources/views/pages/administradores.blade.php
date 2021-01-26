@@ -48,32 +48,67 @@
 
               <div class="card-header">
 
-                <h3 class="card-title">Title</h3>
-
-                <div class="card-tools">
-
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-
-                    <i class="fas fa-minus"></i>
-
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-
-                    <i class="fas fa-times"></i>
-                  
-                  </button>
-
-                </div>
+                <button class="btn btn-primary btn-small" data-toggle="modal" data-target="#crearAdministrador">
+                  Crear nuevo administrador
+                </button>
 
               </div>
 
               <div class="card-body">
 
-                @foreach ($users as $key => $value)
-                    
-                  {{ $value }}
+                <table class="table table-bordered table-striped" width="100%">
+                  
+                  <thead>
 
-                @endforeach
+                    <tr>
+
+                      <th>#</th>
+                      <th>Nombre</th>
+                      <th>Correo</th>
+                      <th width="50px">Foto</th>
+                      <th>Rol</th>
+                      <th width="60px">Acciones</th>
+
+                    </tr>
+
+                  </thead>
+
+                  <tbody>
+
+                    @foreach ($users as $key => $value)
+                        
+                      <tr>
+
+                        <td> {{$key + 1}} </td>
+                        <td> {{$value["name"]}} </td>
+                        <td> {{$value["email"]}} </td>
+                        <td> <img src="{{$value["foto"]}}" class="img-fluid rounded-circle" /> </td>
+                        <td> {{$value["rol"]}} </td>
+                        <td> 
+                          
+                          <div class="btn-group">
+
+                            <button class="btn btn-warning btn-sm mr-1"> 
+                              <i class="fas fa-pencil-alt text-white "></i>
+                            </button>
+
+                            <button class="btn btn-danger btn-sm"> 
+                              <i class="fas fa-trash-alt"></i>
+                            </button>
+
+                          </div>
+                        
+                        </td>
+
+                      </tr>
+
+                    @endforeach
+
+                  </tbody>
+
+                </table>
+
+                
 
               </div>
 
@@ -96,4 +131,127 @@
     </section>
     <!-- /.content -->
   </div>
+
+  <div class="modal" id="crearAdministrador">
+
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+        
+        <form method="POST" action="{{ route('register') }}" >
+          @csrf
+          
+          {{-- Header del modal  --}}
+          <div class="modal-header bg-info">
+
+            <h4 class="modal-title">Crear administrador</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+          </div>
+
+
+          {{-- Body del modal --}}
+          <div class="modal-body">
+
+            Nombre
+            <div class="input-group mb-3">
+                
+              <div class="input-group-append input-group-text">
+                <i class="fas fa-user"></i>
+              </div>
+
+              <input 
+                id="name" type="text" 
+                class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" 
+                required autocomplete="name" autofocus placeholder="Nombre"/>
+
+              @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+              @enderror
+
+            </div>
+
+            {{-- Email --}}
+            <div class="input-group mb-3">
+                
+              <div class="input-group-append input-group-text">
+                <i class="fas fa-envelope"></i>
+              </div>
+
+              <input 
+                id="email" type="email" 
+                class="form-control @error('email') is-invalid @enderror" 
+                name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Correo"/>
+
+              @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+              @enderror
+
+            </div>
+
+            {{-- Password --}}
+            <div class="input-group mb-3">
+                
+              <div class="input-group-append input-group-text">
+                <i class="fas fa-key"></i>
+              </div>
+
+              <input 
+                id="password" type="password" 
+                class="form-control @error('password') is-invalid @enderror" 
+                name="password" required autocomplete="new-password" placeholder="Contraseña min 8 caracteres">
+
+              @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+              @enderror
+
+            </div>
+
+            {{-- Confirm Password --}}
+            <div class="input-group mb-3">
+                
+              <div class="input-group-append input-group-text">
+                <i class="fas fa-key"></i>
+              </div>
+
+              <input 
+                id="password-confirm" type="password" placeholder="Repite constraseña" 
+                class="form-control" name="password_confirmation" required autocomplete="new-password">
+
+            </div>
+
+          </div>
+
+
+          {{-- Footer del modal --}}
+          <div class="modal-footer d-flex justify-content-between">
+
+            <div>
+
+              <button class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            
+            </div>
+
+            <div>
+
+              <button type="submit" class="btn btn-primary">Crear</button>
+            
+            </div>
+
+          </div>
+        
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
 @endsection
